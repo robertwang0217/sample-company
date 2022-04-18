@@ -52,6 +52,10 @@
                                 @enderror
                             </div>
 
+                        </div>
+
+                        <div class="form-group row">
+
                             <div class="col-md-4">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="" required placeholder="Email">
 
