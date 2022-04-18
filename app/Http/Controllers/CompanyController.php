@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Company;
 use App\Services\Helper;
+use App\Http\Requests\CompanyRequest;
 
 class CompanyController extends Controller
 {
@@ -29,7 +30,10 @@ class CompanyController extends Controller
         return view('company.edit', ['company' => $company]);
     }
 
-    public function store(Request $request) {
+    public function store(CompanyRequest $request) {
+
+        info($request->all());
+
 
         $relativeUrl = $this->helper->saveFileToStorage($request->logo);
 
@@ -45,7 +49,7 @@ class CompanyController extends Controller
         return redirect()->route('company.report')->with('success', 'Company was successfully added!');
     }
 
-    public function update(Int $id, Request $request) {
+    public function update(Int $id, CompanyRequest $request) {
 
         $company = Company::find($id);
 

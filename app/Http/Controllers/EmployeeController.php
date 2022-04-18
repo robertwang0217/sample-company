@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Employee;
 use App\Company;
+use App\Http\Requests\EmployeeRequest;
 
 class EmployeeController extends Controller
 {
@@ -24,7 +25,7 @@ class EmployeeController extends Controller
         return view('employee.edit', ['employee' => $employee, 'companies' => $companies]);
     }
 
-    public function store(Request $request) {
+    public function store(EmployeeRequest $request) {
 
         Employee::create([
 
@@ -39,9 +40,7 @@ class EmployeeController extends Controller
         return redirect()->route('employee.report')->with('success', 'Employee was successfully added!');
     }
 
-    public function update(Int $id, Request $request) {
-
-    	info($request->all());
+    public function update(Int $id, EmployeeRequest $request) {
 
         $employee = Employee::find($id);
 
