@@ -32,9 +32,6 @@ class CompanyController extends Controller
 
     public function store(CompanyRequest $request) {
 
-        info($request->all());
-
-
         $relativeUrl = $this->helper->saveFileToStorage($request->logo);
 
         Company::create([
